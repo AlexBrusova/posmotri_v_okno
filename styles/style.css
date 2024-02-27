@@ -13,7 +13,7 @@ html {
   block-size: 100%;
   margin: auto;
   color: #fff;
-  font-family: "Fira Sans Condensed", sans-serif;
+  font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
 }
@@ -38,12 +38,10 @@ ol {
 }
 
 .content {
-  width: 1140px;
   display: flex;
   gap: 30px;
-  height: 100vh;
-  padding: 133px 0;
-  margin: 0 auto;
+  min-height: 100vh;
+  padding: 133px 30px;
 }
 
 .result {
@@ -75,7 +73,13 @@ ol {
 }
 
 .visually-hidden {
-  display: none;
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .search-form .search-form__fieldset {
@@ -88,17 +92,12 @@ ol {
   margin-bottom: 4px;
 }
 
-.search-form__fieldset .search-form__label {
-  border: 1px solid transparent;
-  border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-}
-
 .search-form__fieldset .search-form__label:has(:focus-visible) {
-  border: 1px solid #fff;
+  outline: 1px solid #fff;
 }
 
 .search-form__fieldset .search-form__label .search-form__textfield {
+  appearance: none;
   width: 225px;
   height: 27px;
   background: none;
@@ -107,9 +106,12 @@ ol {
   color: #fff;
 }
 
-.search-form__fieldset .search-form__label .search-form__textfield::placeholder {
+.search-form__textfield::placeholder {
+  font-family: 'Fira Sans Condensed', sans-serif;
+  color: rgba(255 255 255 / 0.70);
   font-size: 18px;
   font-weight: 400;
+  line-height: 21.6px;
 }
 
 .search-form__checkbox-list {
@@ -118,24 +120,31 @@ ol {
   gap: 8px;
 }
 
-.search-form__checkbox-list .search-form__label {
+.search-form__checkbox-list  .search-form__label {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   cursor: pointer;
-  border: 1px solid transparent;
+}
+
+.search-form__checkbox-list .search-form__label:focus {
+  outline: none;
+}
+
+.search-form__checkbox-list .search-form__label:has(:focus-visible) {
+  outline: 1px solid #FFF;
+  outline-offset: 1px;
 }
 
 .search-form__checkbox-list .search-form__label:hover {
   text-decoration: underline;
 }
 
-.search-form__checkbox-list .search-form__label:focus {
-  border: 1px solid #fff;
-}
-
-.search-form__checkbox-list .search-form__label .search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
-  content: "";
+.search-form__checkbox-list
+  .search-form__label
+  .search-form__checkbox:checked
+  + .search-form__pseudo-checkbox::after {
+  content: '';
   width: 15px;
   aspect-ratio: 1;
   background: #fff;
@@ -150,8 +159,7 @@ ol {
   align-items: center;
 }
 
-.search-form__submit-button {
-  width: 194px;
+.button {
   height: 34px;
   border: 1px solid #fff;
   font-size: 18px;
@@ -160,14 +168,24 @@ ol {
   color: #fff;
   cursor: pointer;
   outline: none;
+  line-height: 21.6px;
 }
 
-.search-form__submit-button:hover {
+.search-form__submit-button {
+  width: 194px;
+}
+
+.button:hover {
   text-decoration: underline;
 }
 
-.search-form__submit-button:focus-visible {
-  background: #545050;
+.button:focus-visible {
+  border: 2px double #fff;
+}
+
+.button:active {
+  background-color: #545050;
+  text-decoration: none;
 }
 
 .content__details {
@@ -178,12 +196,15 @@ ol {
   flex-direction: column;
   gap: 21px;
   justify-content: flex-end;
+  margin-top: auto
 }
 
 .content__details .title {
   font-size: 75px;
-  line-height: 60px;
-  font-family: "Oswald", sans-serif;
+  line-height: 70.5px;
+  font-family: Oswald, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .content__details .title .content__accent {
@@ -208,7 +229,6 @@ ol {
   text-decoration: none;
   display: inline-block;
   width: 100%;
-  border: 1px solid transparent;
   outline: none;
 }
 
@@ -220,8 +240,14 @@ ol {
   text-decoration: underline;
 }
 
+.content__card-link:focus {
+  outline: none;
+  outline-offset: 0;
+}
+
 .content__card-link:focus-visible {
   border: 1px solid #fff;
+  padding: 1px;
 }
 
 .content__video-card-description-container {
@@ -230,8 +256,12 @@ ol {
 }
 
 .content__video-card-title {
+  font-family: Oswald, sans-serif;
   font-size: 30px;
   font-weight: 700;
+  line-height: 30px;
+  text-transform: uppercase;
+  padding-bottom: 7px;
 }
 
 .content__video-card-thumbnail {
@@ -250,19 +280,5 @@ ol {
 }
 
 .more-button {
-  height: 34px;
   width: 100%;
-  background: none;
-  border: 1px solid #fff;
-  color: #fff;
-  font-size: 18px;
-  outline: none;
-}
-
-.more-button:hover {
-  text-decoration: underline;
-}
-
-.more-button:focus-visible {
-  background: #545050;
 }
