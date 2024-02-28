@@ -16,6 +16,9 @@ html {
   font-family: 'Fira Sans Condensed', sans-serif;
   font-size: 18px;
   background-color: #1b1919;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
 }
 
 h1,
@@ -40,8 +43,9 @@ ol {
 .content {
   display: flex;
   gap: 30px;
-  min-height: 100vh;
   padding: 133px 30px;
+  align-items: flex-end;
+  justify-content: center;
 }
 
 .result {
@@ -92,18 +96,30 @@ ol {
   margin-bottom: 4px;
 }
 
+.search-form__fieldset .search-form__label {
+  padding: 1px;
+  display: inline-block;
+
+}
+
 .search-form__fieldset .search-form__label:has(:focus-visible) {
   outline: 1px solid #fff;
 }
 
-.search-form__fieldset .search-form__label .search-form__textfield {
+.search-form__textfield {
   appearance: none;
   width: 225px;
   height: 27px;
   background: none;
-  border: none;
   outline: none;
   color: #fff;
+  border: 1px solid transparent;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
 }
 
 .search-form__textfield::placeholder {
@@ -114,17 +130,28 @@ ol {
   line-height: 21.6px;
 }
 
+.search-form__textfield:active {
+  border: 1px solid #FFF;
+}
+
+.search-form__textfield:has(:focus-visible) {
+  border: 1px double #fff;
+  padding: 1px;
+}
+
 .search-form__checkbox-list {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.search-form__checkbox-list  .search-form__label {
+.search-form__checkbox-list .search-form__label {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 7px;
   cursor: pointer;
+  margin-bottom: 4px;
+  margin-right: 2px;
 }
 
 .search-form__checkbox-list .search-form__label:focus {
@@ -140,17 +167,14 @@ ol {
   text-decoration: underline;
 }
 
-.search-form__checkbox-list
-  .search-form__label
-  .search-form__checkbox:checked
-  + .search-form__pseudo-checkbox::after {
+.search-form__checkbox:checked + .search-form__pseudo-checkbox::after {
   content: '';
   width: 15px;
   aspect-ratio: 1;
   background: #fff;
 }
 
-.search-form__checkbox-list .search-form__label .search-form__pseudo-checkbox {
+.search-form__pseudo-checkbox {
   width: 19px;
   height: 19px;
   border: 1px solid #fff;
@@ -169,6 +193,7 @@ ol {
   cursor: pointer;
   outline: none;
   line-height: 21.6px;
+  font-family: 'Fira Sans Condensed', sans-serif;
 }
 
 .search-form__submit-button {
@@ -196,7 +221,6 @@ ol {
   flex-direction: column;
   gap: 21px;
   justify-content: flex-end;
-  margin-top: auto
 }
 
 .content__details .title {
@@ -207,7 +231,7 @@ ol {
   text-transform: uppercase;
 }
 
-.content__details .title .content__accent {
+.content__accent {
   color: #545050;
 }
 
